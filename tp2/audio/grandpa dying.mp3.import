@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c06r8nbdqmu6"
+path="res://.godot/imported/grandpa dying.mp3-d9bd83006d9ef2012cb8c388b644ef76.mp3str"
+
+[deps]
+
+source_file="res://audio/grandpa dying.mp3"
+dest_files=["res://.godot/imported/grandpa dying.mp3-d9bd83006d9ef2012cb8c388b644ef76.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

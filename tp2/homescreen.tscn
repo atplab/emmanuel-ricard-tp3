@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2qblbfro86i0"]
+
+[ext_resource type="Script" uid="uid://c7r4v22te0b4n" path="res://homescreen.gd" id="1_tq0vd"]
+[ext_resource type="Texture2D" uid="uid://dx7indmqfudrf" path="res://img/World/Background/bg_layer1.png" id="2_edeuv"]
+[ext_resource type="Texture2D" uid="uid://pdmig8tsomo" path="res://img/character/Characters/platformChar_idle.png" id="3_c2ysq"]
+[ext_resource type="Texture2D" uid="uid://b54u4ukyawtjt" path="res://img/character/Characters/platformChar_happy.png" id="4_a17e7"]
+[ext_resource type="AudioStream" uid="uid://w1jrdk5rt0u5" path="res://audio/background music.mp3" id="5_c2ysq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v0us7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_c2ysq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a17e7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tq0vd")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(560, 679)
+texture = ExtResource("2_edeuv")
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 200.0
+offset_right = 376.0
+offset_bottom = 231.0
+text = "Jouer"
+
+[node name="Controls" type="Button" parent="."]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 237.0
+offset_right = 392.0
+offset_bottom = 268.0
+text = "contrôles"
+
+[node name="quitter" type="Button" parent="."]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 277.0
+offset_right = 383.0
+offset_bottom = 308.0
+text = "quitter"
+
+[node name="pasquitter" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 142.0
+offset_top = 272.0
+offset_right = 521.0
+offset_bottom = 303.0
+text = "Non tu ne vas pas quitter tu vas jouer à mon jeu"
+
+[node name="controles" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 388.0
+offset_top = 180.0
+offset_right = 678.0
+offset_bottom = 319.0
+text = "Touches :
+flèche droite : avancer
+flèche gauche : reculer
+Espace : saut
+Cliquez ici pour fermer ce menu"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(352, 152)
+sprite_frames = SubResource("SpriteFrames_v0us7")
+autoplay = "default"
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.1
+blend_mode = 1
+shadow_color = Color(0.707964, 0.681737, 0.461887, 0)
+
+[node name="background music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_c2ysq")
+autoplay = true
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="quitter" to="." method="_on_quitter_pressed"]
+[connection signal="pressed" from="pasquitter" to="." method="_on_pasquitter_pressed"]
+[connection signal="pressed" from="controles" to="." method="_on_controles_pressed"]

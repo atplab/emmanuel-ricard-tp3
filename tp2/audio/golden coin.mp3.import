@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dwryv5o5efccx"
+path="res://.godot/imported/golden coin.mp3-b9fe6d3daa59646699ff423de8b4fac3.mp3str"
+
+[deps]
+
+source_file="res://audio/golden coin.mp3"
+dest_files=["res://.godot/imported/golden coin.mp3-b9fe6d3daa59646699ff423de8b4fac3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

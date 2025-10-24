@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cpr3r6456im61"
+path="res://.godot/imported/agressive coin.mp3-767a33d5df1b9267e95a29b1c81cc6d0.mp3str"
+
+[deps]
+
+source_file="res://audio/agressive coin.mp3"
+dest_files=["res://.godot/imported/agressive coin.mp3-767a33d5df1b9267e95a29b1c81cc6d0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
