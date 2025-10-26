@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://mfm4us8ni1gg"]
+
+[ext_resource type="Script" uid="uid://c5kp2545c5g0k" path="res://porte.gd" id="1_8dnir"]
+[ext_resource type="Texture2D" uid="uid://dg84hgaq87w5t" path="res://img/World/Tiles/platformPack_tile052.png" id="2_sm8av"]
+[ext_resource type="Texture2D" uid="uid://dyglcpakieyjk" path="res://img/World/Tiles/platformPack_tile048.png" id="3_iajut"]
+[ext_resource type="Texture2D" uid="uid://c2rk8ljhfh361" path="res://img/World/industrial/platformIndustrial_036.png" id="4_sm8av"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7unoq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sm8av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sm8av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sm8av")
+}],
+"loop": true,
+"name": &"Closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_iajut")
+}],
+"loop": true,
+"name": &"Open",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_on60i"]
+radius = 21.0
+height = 42.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="porte" type="Area2D" parent="."]
+script = ExtResource("1_8dnir")
+
+[node name="porte" type="AnimatedSprite2D" parent="porte"]
+position = Vector2(87, 445)
+sprite_frames = SubResource("SpriteFrames_7unoq")
+animation = &"Closed"
+autoplay = "Closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="porte"]
+position = Vector2(87, 450)
+shape = SubResource("CapsuleShape2D_on60i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(87, 513)
+texture = ExtResource("4_sm8av")
+
+[connection signal="body_entered" from="porte" to="porte" method="_on_body_entered"]

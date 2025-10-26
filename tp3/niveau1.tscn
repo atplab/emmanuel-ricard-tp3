@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b1ro10u7is8fx"]
+[gd_scene load_steps=45 format=3 uid="uid://b1ro10u7is8fx"]
 
 [ext_resource type="Script" uid="uid://ct3t1w0kcqaoi" path="res://niveau_1.gd" id="1_2db7c"]
 [ext_resource type="Texture2D" uid="uid://cn6wl1t5fdtx6" path="res://img/World/Environment/mushroom_red.png" id="1_cte38"]
@@ -23,12 +23,17 @@
 [ext_resource type="Texture2D" uid="uid://bywidsi2oq3pu" path="res://img/items/bronze_2.png" id="18_eyyip"]
 [ext_resource type="Texture2D" uid="uid://d2024kddvw3bf" path="res://img/items/bronze_3.png" id="19_ok41p"]
 [ext_resource type="Texture2D" uid="uid://bfsmiqcdo63mp" path="res://img/items/bronze_4.png" id="20_h2d1a"]
+[ext_resource type="Script" uid="uid://c5kp2545c5g0k" path="res://porte.gd" id="21_285be"]
 [ext_resource type="AudioStream" uid="uid://xmsricj51e2a" path="res://audio/calm coin.mp3" id="21_eyyip"]
 [ext_resource type="Texture2D" uid="uid://co2ecvfdlx3tv" path="res://img/items/silver_1.png" id="22_ug3om"]
 [ext_resource type="Texture2D" uid="uid://cqjlxyii1nfvq" path="res://img/items/silver_2.png" id="23_fskeg"]
 [ext_resource type="Texture2D" uid="uid://6n1r6kd0s40r" path="res://img/items/silver_3.png" id="24_w1a7u"]
 [ext_resource type="Texture2D" uid="uid://dti7dmllr8m0s" path="res://img/items/silver_4.png" id="25_4uxrh"]
 [ext_resource type="AudioStream" uid="uid://dwryv5o5efccx" path="res://audio/golden coin.mp3" id="26_fskeg"]
+[ext_resource type="Texture2D" uid="uid://decya2c4jv5xp" path="res://img/mountain_bg.jpg" id="30_xeobv"]
+[ext_resource type="Texture2D" uid="uid://dg84hgaq87w5t" path="res://img/World/Tiles/platformPack_tile052.png" id="31_v1sc6"]
+[ext_resource type="Texture2D" uid="uid://dyglcpakieyjk" path="res://img/World/Tiles/platformPack_tile048.png" id="32_285be"]
+[ext_resource type="Texture2D" uid="uid://cb7743n3pqwlg" path="res://img/World/Tiles/platformPack_tile064.png" id="33_ixoue"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_neqgn"]
 size = Vector2(26.2195, 13.2195)
@@ -69,6 +74,35 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cg2na"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_v1sc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_v1sc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_v1sc6")
+}],
+"loop": true,
+"name": &"Closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_285be")
+}],
+"loop": true,
+"name": &"Open",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ajgjv"]
+radius = 21.0
+height = 56.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5al67"]
 radius = 38.7224
@@ -127,6 +161,11 @@ animations = [{
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_2db7c")
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(164.447, -257.875)
+scale = Vector2(0.500493, 0.500493)
+texture = ExtResource("30_xeobv")
 
 [node name="pl_cake" type="StaticBody2D" parent="."]
 position = Vector2(-28, -339)
@@ -511,7 +550,6 @@ flip_h = true
 
 [node name="Ground16" type="StaticBody2D" parent="pl_sand/big_grounds"]
 position = Vector2(59.1462, 6.10352e-05)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground16"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -524,7 +562,6 @@ texture = ExtResource("3_w8phw")
 
 [node name="Ground7" type="StaticBody2D" parent="pl_sand/big_grounds"]
 position = Vector2(-104.878, -68.9025)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground7"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -549,7 +586,6 @@ texture = ExtResource("3_w8phw")
 
 [node name="Ground8" type="StaticBody2D" parent="pl_sand/big_grounds"]
 position = Vector2(-59.7093, -3.8147e-06)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground8"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -562,7 +598,6 @@ texture = ExtResource("3_w8phw")
 
 [node name="Ground9" type="StaticBody2D" parent="pl_sand/big_grounds"]
 position = Vector2(-118.902, 0)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground9"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -576,7 +611,6 @@ flip_h = true
 
 [node name="Ground10" type="StaticBody2D" parent="pl_sand/big_grounds"]
 position = Vector2(-178.002, -4.29153e-06)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground10"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -589,7 +623,6 @@ texture = ExtResource("3_w8phw")
 
 [node name="Ground11" type="StaticBody2D" parent="pl_sand/big_grounds"]
 position = Vector2(-237.195, 0)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground11"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -603,7 +636,6 @@ flip_h = true
 
 [node name="Ground12" type="StaticBody2D" parent="pl_sand/big_grounds"]
 position = Vector2(-295.685, -4.29153e-06)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground12"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -616,7 +648,6 @@ texture = ExtResource("3_w8phw")
 
 [node name="Ground13" type="StaticBody2D" parent="pl_sand/big_grounds"]
 position = Vector2(-355.488, 0)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground13"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -630,7 +661,6 @@ flip_h = true
 
 [node name="Ground14" type="StaticBody2D" parent="pl_sand/big_grounds"]
 position = Vector2(-413.978, -3.8147e-06)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground14"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -643,7 +673,6 @@ texture = ExtResource("3_w8phw")
 
 [node name="Ground15" type="StaticBody2D" parent="pl_sand/big_grounds"]
 position = Vector2(-473.78, 0)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground15"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -657,7 +686,6 @@ flip_h = true
 
 [node name="Ground17" type="StaticBody2D" parent="pl_sand/big_grounds"]
 position = Vector2(118.293, 0)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground17"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -671,7 +699,6 @@ flip_h = true
 
 [node name="Ground18" type="StaticBody2D" parent="pl_sand/big_grounds"]
 position = Vector2(49.3903, -235.976)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground18"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -684,8 +711,7 @@ texture = ExtResource("3_w8phw")
 flip_h = true
 
 [node name="Ground19" type="StaticBody2D" parent="pl_sand/big_grounds"]
-position = Vector2(-175, -262.195)
-scale = Vector2(1, 1)
+position = Vector2(-175, -256.707)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground19"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -699,7 +725,6 @@ flip_h = true
 
 [node name="Ground20" type="StaticBody2D" parent="pl_sand/big_grounds"]
 position = Vector2(-532.88, -3.8147e-06)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground20"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -712,7 +737,6 @@ texture = ExtResource("3_w8phw")
 
 [node name="Ground21" type="StaticBody2D" parent="pl_sand/big_grounds"]
 position = Vector2(-592.073, 0)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground21"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -726,7 +750,6 @@ flip_h = true
 
 [node name="Ground22" type="StaticBody2D" parent="pl_sand/big_grounds"]
 position = Vector2(-651.173, -3.8147e-06)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground22"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -739,7 +762,6 @@ texture = ExtResource("3_w8phw")
 
 [node name="Ground23" type="StaticBody2D" parent="pl_sand/big_grounds"]
 position = Vector2(-710.366, 0)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground23"]
 shape = SubResource("RectangleShape2D_cte38")
@@ -753,11 +775,113 @@ flip_h = true
 
 [node name="Ground24" parent="pl_sand/big_grounds" instance=ExtResource("9_4uxrh")]
 position = Vector2(-506.707, -214.024)
-scale = Vector2(1, 1)
 
 [node name="Ground25" parent="pl_sand/big_grounds" instance=ExtResource("9_4uxrh")]
 position = Vector2(-565.854, -214.024)
-scale = Vector2(1, 1)
+
+[node name="Ground26" type="StaticBody2D" parent="pl_sand/big_grounds"]
+position = Vector2(-47.5141, -291.463)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground26"]
+shape = SubResource("RectangleShape2D_cte38")
+one_way_collision = true
+
+[node name="GroundSand" type="Sprite2D" parent="pl_sand/big_grounds/Ground26/CollisionShape2D"]
+position = Vector2(0.484375, 0.0152435)
+scale = Vector2(0.156915, 0.156915)
+texture = ExtResource("3_w8phw")
+flip_h = true
+
+[node name="Ground27" type="StaticBody2D" parent="pl_sand/big_grounds"]
+position = Vector2(-48.7337, -360.366)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground27"]
+shape = SubResource("RectangleShape2D_cte38")
+one_way_collision = true
+
+[node name="GroundSand" type="Sprite2D" parent="pl_sand/big_grounds/Ground27/CollisionShape2D"]
+position = Vector2(0.484375, 0.0152435)
+scale = Vector2(0.156915, 0.156915)
+texture = ExtResource("3_w8phw")
+flip_h = true
+
+[node name="Ground28" type="StaticBody2D" parent="pl_sand/big_grounds"]
+position = Vector2(-158.49, -403.048)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground28"]
+shape = SubResource("RectangleShape2D_cte38")
+one_way_collision = true
+
+[node name="GroundSand" type="Sprite2D" parent="pl_sand/big_grounds/Ground28/CollisionShape2D"]
+position = Vector2(0.484375, 0.0152435)
+scale = Vector2(0.156915, 0.156915)
+texture = ExtResource("3_w8phw")
+flip_h = true
+
+[node name="Ground29" type="StaticBody2D" parent="pl_sand/big_grounds"]
+position = Vector2(-276.173, -404.268)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground29"]
+shape = SubResource("RectangleShape2D_cte38")
+one_way_collision = true
+
+[node name="GroundSand" type="Sprite2D" parent="pl_sand/big_grounds/Ground29/CollisionShape2D"]
+position = Vector2(0.484375, 0.0152435)
+scale = Vector2(0.156915, 0.156915)
+texture = ExtResource("3_w8phw")
+flip_h = true
+
+[node name="Ground30" type="StaticBody2D" parent="pl_sand/big_grounds"]
+position = Vector2(-401.782, -403.048)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground30"]
+shape = SubResource("RectangleShape2D_cte38")
+one_way_collision = true
+
+[node name="GroundSand" type="Sprite2D" parent="pl_sand/big_grounds/Ground30/CollisionShape2D"]
+position = Vector2(0.484375, 0.0152435)
+scale = Vector2(0.156915, 0.156915)
+texture = ExtResource("3_w8phw")
+flip_h = true
+
+[node name="Ground31" type="StaticBody2D" parent="pl_sand/big_grounds"]
+position = Vector2(-542.026, -402.439)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground31"]
+shape = SubResource("RectangleShape2D_cte38")
+one_way_collision = true
+
+[node name="GroundSand" type="Sprite2D" parent="pl_sand/big_grounds/Ground31/CollisionShape2D"]
+position = Vector2(0.484375, 0.0152435)
+scale = Vector2(0.156915, 0.156915)
+texture = ExtResource("3_w8phw")
+flip_h = true
+
+[node name="Ground32" type="StaticBody2D" parent="pl_sand/big_grounds"]
+position = Vector2(-741.416, -401.829)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground32"]
+shape = SubResource("RectangleShape2D_cte38")
+one_way_collision = true
+
+[node name="GroundSand" type="Sprite2D" parent="pl_sand/big_grounds/Ground32/CollisionShape2D"]
+position = Vector2(0.484375, 0.0152435)
+scale = Vector2(0.156915, 0.156915)
+texture = ExtResource("3_w8phw")
+flip_h = true
+
+[node name="Ground33" type="StaticBody2D" parent="pl_sand/big_grounds"]
+position = Vector2(-736.538, -618.902)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/big_grounds/Ground33"]
+shape = SubResource("RectangleShape2D_cte38")
+one_way_collision = true
+
+[node name="GroundSand" type="Sprite2D" parent="pl_sand/big_grounds/Ground33/CollisionShape2D"]
+position = Vector2(0.484375, 0.0152435)
+scale = Vector2(0.156915, 0.156915)
+texture = ExtResource("3_w8phw")
+flip_h = true
 
 [node name="little_grounds" type="Node2D" parent="pl_sand"]
 position = Vector2(217.505, 2921.27)
@@ -786,6 +910,42 @@ one_way_collision = true
 scale = Vector2(0.13, 0.13)
 texture = ExtResource("9_w1a7u")
 
+[node name="littlesand3" type="StaticBody2D" parent="pl_sand/little_grounds"]
+position = Vector2(-3863.57, -5170.09)
+scale = Vector2(4.51969, 4.51969)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="pl_sand/little_grounds/littlesand3"]
+shape = SubResource("RectangleShape2D_neqgn")
+one_way_collision = true
+
+[node name="GroundCakeSmall" type="Sprite2D" parent="pl_sand/little_grounds/littlesand3/CollisionShape2D4"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("9_w1a7u")
+
+[node name="littlesand4" type="StaticBody2D" parent="pl_sand/little_grounds"]
+position = Vector2(-3632.07, -5401.59)
+scale = Vector2(4.51969, 4.51969)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="pl_sand/little_grounds/littlesand4"]
+shape = SubResource("RectangleShape2D_neqgn")
+one_way_collision = true
+
+[node name="GroundCakeSmall" type="Sprite2D" parent="pl_sand/little_grounds/littlesand4/CollisionShape2D4"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("9_w1a7u")
+
+[node name="littlesand5" type="StaticBody2D" parent="pl_sand/little_grounds"]
+position = Vector2(-3841.52, -5641.35)
+scale = Vector2(4.51969, 4.51969)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="pl_sand/little_grounds/littlesand5"]
+shape = SubResource("RectangleShape2D_neqgn")
+one_way_collision = true
+
+[node name="GroundCakeSmall" type="Sprite2D" parent="pl_sand/little_grounds/littlesand5/CollisionShape2D4"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("9_w1a7u")
+
 [node name="player" parent="." instance=ExtResource("4_w8phw")]
 position = Vector2(48, 669)
 scale = Vector2(0.513591, 0.513591)
@@ -801,7 +961,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 
 [node name="jump" type="AudioStreamPlayer2D" parent="player"]
-position = Vector2(1067, -1526.51)
+position = Vector2(1841.93, 613.328)
 scale = Vector2(0.501062, 0.501062)
 stream = ExtResource("10_b8t6s")
 
@@ -818,7 +978,6 @@ script = ExtResource("13_reu15")
 metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="ennemies/ennemie1"]
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ennemies/ennemie1/Area2D"]
 position = Vector2(8.82361, 23.5295)
@@ -833,18 +992,43 @@ one_way_collision = true
 
 [node name="ennemie1" type="AnimatedSprite2D" parent="ennemies/ennemie1"]
 position = Vector2(7.77161, 19.4294)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_lvlku")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="dead_bee" type="AudioStreamPlayer2D" parent="ennemies/ennemie1"]
-scale = Vector2(1, 1)
 stream = ExtResource("15_xmwx5")
 
 [node name="background music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_rm7ey")
 autoplay = true
+
+[node name="Door" type="Node" parent="."]
+
+[node name="porte" type="Area2D" parent="Door"]
+script = ExtResource("21_285be")
+
+[node name="porte" type="AnimatedSprite2D" parent="Door/porte"]
+position = Vector2(-367, -1208)
+sprite_frames = SubResource("SpriteFrames_cg2na")
+animation = &"Closed"
+autoplay = "Closed"
+frame = 2
+frame_progress = 0.409897
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/porte"]
+position = Vector2(-367, -1203)
+shape = SubResource("CapsuleShape2D_ajgjv")
+
+[node name="bouton" type="Area2D" parent="Door"]
+
+[node name="bouton" type="Sprite2D" parent="Door/bouton"]
+position = Vector2(-88, -544)
+texture = ExtResource("33_ixoue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/bouton"]
+position = Vector2(-88, -524)
+shape = SubResource("CapsuleShape2D_ajgjv")
 
 [node name="coins" type="Node2D" parent="."]
 position = Vector2(474, 373)
@@ -894,12 +1078,50 @@ sprite_frames = SubResource("SpriteFrames_ug3om")
 autoplay = "default"
 frame_progress = 0.35892
 
+[node name="coins6" type="Area2D" parent="coins"]
+position = Vector2(-2662.8, -1495.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coins/coins6"]
+position = Vector2(-680.403, -1050)
+shape = SubResource("CircleShape2D_5al67")
+
+[node name="coins1" type="AnimatedSprite2D" parent="coins/coins6"]
+position = Vector2(-680.403, -1050)
+sprite_frames = SubResource("SpriteFrames_ug3om")
+autoplay = "default"
+frame_progress = 0.35892
+
+[node name="coins7" type="Area2D" parent="coins"]
+position = Vector2(-2788.8, -5573.41)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coins/coins7"]
+position = Vector2(0.00012207, 1.52588e-05)
+shape = SubResource("CircleShape2D_5al67")
+
+[node name="coins1" type="AnimatedSprite2D" parent="coins/coins7"]
+position = Vector2(1.09673e-05, 0)
+sprite_frames = SubResource("SpriteFrames_ug3om")
+autoplay = "default"
+frame_progress = 0.35892
+
+[node name="coins8" type="Area2D" parent="coins"]
+position = Vector2(-2578.8, -5481.01)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coins/coins8"]
+shape = SubResource("CircleShape2D_5al67")
+
+[node name="coins1" type="AnimatedSprite2D" parent="coins/coins8"]
+sprite_frames = SubResource("SpriteFrames_ug3om")
+autoplay = "default"
+frame_progress = 0.35892
+
 [node name="coins" type="AudioStreamPlayer2D" parent="coins"]
-position = Vector2(1591.8, 663.601)
+position = Vector2(-3150, -1520.4)
 stream = ExtResource("21_eyyip")
 volume_db = 9.0
 
 [node name="silvercoin" type="Node2D" parent="coins"]
+position = Vector2(42, -67.2001)
 
 [node name="silvercoin" type="Area2D" parent="coins/silvercoin"]
 position = Vector2(823.201, -516.601)
@@ -911,12 +1133,17 @@ shape = SubResource("CircleShape2D_5al67")
 sprite_frames = SubResource("SpriteFrames_reu15")
 
 [node name="silvercoins" type="AudioStreamPlayer2D" parent="coins/silvercoin"]
-position = Vector2(1591.8, 663.601)
+position = Vector2(823.201, -516.6)
 stream = ExtResource("26_fskeg")
 
 [connection signal="body_entered" from="ennemies/ennemie1/Area2D" to="ennemies/ennemie1" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Door/porte" to="Door/porte" method="_on_body_entered"]
+[connection signal="body_entered" from="Door/bouton" to="." method="_on_bouton_body_entered"]
 [connection signal="body_entered" from="coins/coins2" to="." method="_on_coins_2_body_entered"]
 [connection signal="body_entered" from="coins/coins3" to="." method="_on_coins_3_body_entered"]
 [connection signal="body_entered" from="coins/coins4" to="." method="_on_coins_4_body_entered"]
 [connection signal="body_entered" from="coins/coins5" to="." method="_on_coins_5_body_entered"]
+[connection signal="body_entered" from="coins/coins6" to="." method="_on_coins_6_body_entered"]
+[connection signal="body_entered" from="coins/coins7" to="." method="_on_coins_7_body_entered"]
+[connection signal="body_entered" from="coins/coins8" to="." method="_on_coins_8_body_entered"]
 [connection signal="body_entered" from="coins/silvercoin/silvercoin" to="." method="_on_silvercoin_body_entered"]

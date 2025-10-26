@@ -39,9 +39,33 @@ func _on_coins_5_body_entered(body: Node2D) -> void:
 	$coins/coins5.queue_free()
 	$coins/coins.play()
 
+func _on_coins_6_body_entered(body: Node2D) -> void:
+	$coins/coins6.visible = false
+	$coins/coins6.queue_free()
+	$coins/coins.play()
+	
+func _on_coins_7_body_entered(body: Node2D) -> void:
+	$coins/coins7.visible = false
+	$coins/coins7.queue_free()
+	$coins/coins.play()
+
+func _on_coins_8_body_entered(body: Node2D) -> void:
+	$coins/coins8.visible = false
+	$coins/coins8.queue_free()
+	$coins/coins.play()
 
 
 func _on_silvercoin_body_entered(body: Node2D) -> void:
 	$coins/silvercoin/silvercoin.visible = false
 	$coins/silvercoin/silvercoin.queue_free()
 	$coins/silvercoin/silvercoins.play()
+
+
+func _on_bouton_body_entered(body: Node2D) -> void:
+	$Door/porte/porte.play("Open")
+	
+
+
+func _on_porte_body_entered(body: Node2D) -> void:
+	if body is Joueur:
+		Main.changer_scene(main)
