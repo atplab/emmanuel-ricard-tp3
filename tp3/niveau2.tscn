@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://mfm4us8ni1gg"]
+[gd_scene load_steps=8 format=3 uid="uid://mfm4us8ni1gg"]
 
 [ext_resource type="Script" uid="uid://c5kp2545c5g0k" path="res://porte.gd" id="1_8dnir"]
 [ext_resource type="Texture2D" uid="uid://dg84hgaq87w5t" path="res://img/World/Tiles/platformPack_tile052.png" id="2_sm8av"]
@@ -34,6 +34,9 @@ animations = [{
 radius = 21.0
 height = 42.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sm8av"]
+size = Vector2(69, 21)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="porte" type="Area2D" parent="."]
@@ -49,8 +52,17 @@ autoplay = "Closed"
 position = Vector2(87, 450)
 shape = SubResource("CapsuleShape2D_on60i")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(87, 513)
+[node name="Industrial_plateformes" type="Node" parent="."]
+
+[node name="Industrial" type="StaticBody2D" parent="Industrial_plateformes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Industrial_plateformes/Industrial"]
+position = Vector2(87, 488)
+shape = SubResource("RectangleShape2D_sm8av")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Industrial_plateformes/Industrial/CollisionShape2D"]
+position = Vector2(0, 24)
 texture = ExtResource("4_sm8av")
 
 [connection signal="body_entered" from="porte" to="porte" method="_on_body_entered"]
