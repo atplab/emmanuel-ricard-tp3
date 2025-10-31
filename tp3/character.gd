@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+class_name Player
 
 const SPEED = 270.0
 const JUMP_VELOCITY = -500.0
@@ -57,6 +58,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-
+func sauter():
+	velocity.y = JUMP_VELOCITY
+	$jump.play()
 	
  

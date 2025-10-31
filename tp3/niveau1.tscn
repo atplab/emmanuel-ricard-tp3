@@ -16,14 +16,12 @@
 [ext_resource type="Texture2D" uid="uid://jcvikc241btk" path="res://img/character/Enemies/wingMan2.png" id="11_rm7ey"]
 [ext_resource type="Texture2D" uid="uid://fbmdei2xtcds" path="res://img/character/Enemies/wingMan3.png" id="12_xmwx5"]
 [ext_resource type="Texture2D" uid="uid://de7v3qyhwao0" path="res://img/character/Enemies/wingMan4.png" id="13_cdtrv"]
-[ext_resource type="Script" uid="uid://dptkgy5erj5fm" path="res://ennemie_1.gd" id="13_reu15"]
 [ext_resource type="AudioStream" uid="uid://w1jrdk5rt0u5" path="res://audio/background music.mp3" id="15_rm7ey"]
 [ext_resource type="AudioStream" uid="uid://cwahu06v8c53w" path="res://audio/crack.mp3" id="15_xmwx5"]
 [ext_resource type="Texture2D" uid="uid://c8qctik1cbxrw" path="res://img/items/bronze_1.png" id="17_qm8in"]
 [ext_resource type="Texture2D" uid="uid://bywidsi2oq3pu" path="res://img/items/bronze_2.png" id="18_eyyip"]
 [ext_resource type="Texture2D" uid="uid://d2024kddvw3bf" path="res://img/items/bronze_3.png" id="19_ok41p"]
 [ext_resource type="Texture2D" uid="uid://bfsmiqcdo63mp" path="res://img/items/bronze_4.png" id="20_h2d1a"]
-[ext_resource type="Script" uid="uid://c5kp2545c5g0k" path="res://porte.gd" id="21_285be"]
 [ext_resource type="AudioStream" uid="uid://xmsricj51e2a" path="res://audio/calm coin.mp3" id="21_eyyip"]
 [ext_resource type="Texture2D" uid="uid://co2ecvfdlx3tv" path="res://img/items/silver_1.png" id="22_ug3om"]
 [ext_resource type="Texture2D" uid="uid://cqjlxyii1nfvq" path="res://img/items/silver_2.png" id="23_fskeg"]
@@ -35,17 +33,47 @@
 [ext_resource type="Texture2D" uid="uid://dyglcpakieyjk" path="res://img/World/Tiles/platformPack_tile048.png" id="32_285be"]
 [ext_resource type="Texture2D" uid="uid://cb7743n3pqwlg" path="res://img/World/Tiles/platformPack_tile064.png" id="33_ixoue"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ajgjv"]
+radius = 20.0
+height = 40.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cg2na"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_v1sc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_v1sc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_v1sc6")
+}],
+"loop": true,
+"name": &"Closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_285be")
+}],
+"loop": true,
+"name": &"Open",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_285be"]
+radius = 22.0
+height = 54.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_neqgn"]
 size = Vector2(26.2195, 13.2195)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8phw"]
-size = Vector2(60, 14)
+size = Vector2(60, 14.9264)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cte38"]
 size = Vector2(59.4878, 14.6342)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yysgw"]
-size = Vector2(21.9999, 26)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lvlku"]
 animations = [{
@@ -75,34 +103,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_cg2na"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("31_v1sc6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("31_v1sc6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("31_v1sc6")
-}],
-"loop": true,
-"name": &"Closed",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("32_285be")
-}],
-"loop": true,
-"name": &"Open",
-"speed": 5.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ex8sg"]
+size = Vector2(21.9999, 3.85089)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ajgjv"]
-radius = 21.0
-height = 56.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yysgw"]
+size = Vector2(16.5509, 1.74229)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5al67"]
 radius = 38.7224
@@ -166,6 +171,30 @@ script = ExtResource("1_2db7c")
 position = Vector2(164.447, -257.875)
 scale = Vector2(0.500493, 0.500493)
 texture = ExtResource("30_xeobv")
+
+[node name="bouton" type="Area2D" parent="."]
+
+[node name="bouton" type="Sprite2D" parent="bouton"]
+position = Vector2(-88, -544)
+texture = ExtResource("33_ixoue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bouton"]
+position = Vector2(-88, -524)
+shape = SubResource("CapsuleShape2D_ajgjv")
+
+[node name="porte" type="Area2D" parent="."]
+
+[node name="porte" type="AnimatedSprite2D" parent="porte"]
+position = Vector2(-367, -1208)
+sprite_frames = SubResource("SpriteFrames_cg2na")
+animation = &"Closed"
+autoplay = "Closed"
+frame = 2
+frame_progress = 0.409897
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="porte"]
+position = Vector2(-367, -1203)
+shape = SubResource("CapsuleShape2D_285be")
 
 [node name="pl_cake" type="StaticBody2D" parent="."]
 position = Vector2(-28, -339)
@@ -288,7 +317,7 @@ scale = Vector2(0.13, 0.13)
 texture = ExtResource("2_w8phw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pl_cake"]
-position = Vector2(48.1238, 646.341)
+position = Vector2(48.1238, 645.878)
 shape = SubResource("RectangleShape2D_w8phw")
 one_way_collision = true
 
@@ -946,9 +975,80 @@ one_way_collision = true
 scale = Vector2(0.13, 0.13)
 texture = ExtResource("9_w1a7u")
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.1
+blend_mode = 1
+
+[node name="ennemies" type="Node" parent="."]
+
+[node name="bee1" type="Area2D" parent="ennemies" groups=["ennemi"]]
+position = Vector2(485, -202)
+scale = Vector2(0.34, 0.34)
+metadata/_edit_group_ = true
+
+[node name="bee" type="AnimatedSprite2D" parent="ennemies/bee1"]
+position = Vector2(7.77209, -36.4531)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_lvlku")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ennemies/bee1"]
+position = Vector2(8.82352, -76.4706)
+scale = Vector2(4.12119, -4.44306)
+shape = SubResource("RectangleShape2D_ex8sg")
+
+[node name="dead_bee" type="AudioStreamPlayer2D" parent="ennemies/bee1"]
+scale = Vector2(1, 1)
+stream = ExtResource("15_xmwx5")
+
+[node name="dead_player" type="Area2D" parent="ennemies/bee1"]
+position = Vector2(-1132.35, 982.353)
+scale = Vector2(2.94118, 2.94118)
+
+[node name="collision_dead" type="CollisionShape2D" parent="ennemies/bee1/dead_player"]
+position = Vector2(388, -343)
+scale = Vector2(1.44121, 12.2012)
+shape = SubResource("RectangleShape2D_yysgw")
+
+[node name="bee2" type="Area2D" parent="ennemies" groups=["ennemi"]]
+position = Vector2(183, -562)
+scale = Vector2(0.34, 0.34)
+metadata/_edit_group_ = true
+
+[node name="bee" type="AnimatedSprite2D" parent="ennemies/bee2"]
+position = Vector2(7.77209, -36.4531)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_lvlku")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ennemies/bee2"]
+position = Vector2(8.82352, -76.4706)
+scale = Vector2(4.12119, -4.44306)
+shape = SubResource("RectangleShape2D_ex8sg")
+
+[node name="dead_bee" type="AudioStreamPlayer2D" parent="ennemies/bee2"]
+scale = Vector2(1, 1)
+stream = ExtResource("15_xmwx5")
+
+[node name="dead_player2" type="Area2D" parent="ennemies/bee2"]
+position = Vector2(-1132.35, 982.353)
+scale = Vector2(2.94118, 2.94118)
+
+[node name="collision_dead" type="CollisionShape2D" parent="ennemies/bee2/dead_player2"]
+position = Vector2(388, -343)
+scale = Vector2(1.44121, 12.2012)
+shape = SubResource("RectangleShape2D_yysgw")
+
+[node name="background music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_rm7ey")
+autoplay = true
+
 [node name="player" parent="." instance=ExtResource("4_w8phw")]
-position = Vector2(48, 669)
+position = Vector2(56, 683)
 scale = Vector2(0.513591, 0.513591)
+metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 scale = Vector2(0.997946, 1.04359)
@@ -964,71 +1064,6 @@ position_smoothing_speed = 4.0
 position = Vector2(1841.93, 613.328)
 scale = Vector2(0.501062, 0.501062)
 stream = ExtResource("10_b8t6s")
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.1
-blend_mode = 1
-
-[node name="ennemies" type="Node" parent="."]
-
-[node name="ennemie1" type="CharacterBody2D" parent="ennemies"]
-position = Vector2(385, -334)
-scale = Vector2(0.34, 0.34)
-script = ExtResource("13_reu15")
-metadata/_edit_group_ = true
-
-[node name="Area2D" type="Area2D" parent="ennemies/ennemie1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ennemies/ennemie1/Area2D"]
-position = Vector2(8.82361, 23.5295)
-scale = Vector2(3.8859, 3.8859)
-shape = SubResource("RectangleShape2D_yysgw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ennemies/ennemie1"]
-position = Vector2(8.82361, 23.5295)
-scale = Vector2(3.8859, 3.8859)
-shape = SubResource("RectangleShape2D_yysgw")
-one_way_collision = true
-
-[node name="ennemie1" type="AnimatedSprite2D" parent="ennemies/ennemie1"]
-position = Vector2(7.77161, 19.4294)
-sprite_frames = SubResource("SpriteFrames_lvlku")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="dead_bee" type="AudioStreamPlayer2D" parent="ennemies/ennemie1"]
-stream = ExtResource("15_xmwx5")
-
-[node name="background music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("15_rm7ey")
-autoplay = true
-
-[node name="Door" type="Node" parent="."]
-
-[node name="porte" type="Area2D" parent="Door"]
-script = ExtResource("21_285be")
-
-[node name="porte" type="AnimatedSprite2D" parent="Door/porte"]
-position = Vector2(-367, -1208)
-sprite_frames = SubResource("SpriteFrames_cg2na")
-animation = &"Closed"
-autoplay = "Closed"
-frame = 2
-frame_progress = 0.409897
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/porte"]
-position = Vector2(-367, -1203)
-shape = SubResource("CapsuleShape2D_ajgjv")
-
-[node name="bouton" type="Area2D" parent="Door"]
-
-[node name="bouton" type="Sprite2D" parent="Door/bouton"]
-position = Vector2(-88, -544)
-texture = ExtResource("33_ixoue")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/bouton"]
-position = Vector2(-88, -524)
-shape = SubResource("CapsuleShape2D_ajgjv")
 
 [node name="coins" type="Node2D" parent="."]
 position = Vector2(474, 373)
@@ -1136,9 +1171,12 @@ sprite_frames = SubResource("SpriteFrames_reu15")
 position = Vector2(823.201, -516.6)
 stream = ExtResource("26_fskeg")
 
-[connection signal="body_entered" from="ennemies/ennemie1/Area2D" to="ennemies/ennemie1" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Door/porte" to="Door/porte" method="_on_body_entered"]
-[connection signal="body_entered" from="Door/bouton" to="." method="_on_bouton_body_entered"]
+[connection signal="body_entered" from="bouton" to="." method="_on_bouton_body_entered"]
+[connection signal="body_entered" from="porte" to="." method="_on_porte_body_entered"]
+[connection signal="body_entered" from="ennemies/bee1" to="." method="_on_bee_1_body_entered"]
+[connection signal="body_entered" from="ennemies/bee1/dead_player" to="." method="_on_dead_player_body_entered"]
+[connection signal="body_entered" from="ennemies/bee2" to="." method="_on_bee_2_body_entered"]
+[connection signal="body_entered" from="ennemies/bee2/dead_player2" to="." method="_on_dead_player_2_body_entered"]
 [connection signal="body_entered" from="coins/coins2" to="." method="_on_coins_2_body_entered"]
 [connection signal="body_entered" from="coins/coins3" to="." method="_on_coins_3_body_entered"]
 [connection signal="body_entered" from="coins/coins4" to="." method="_on_coins_4_body_entered"]

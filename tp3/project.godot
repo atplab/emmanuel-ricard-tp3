@@ -15,11 +15,19 @@ run/main_scene="uid://c2qblbfro86i0"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Main="*res://main.gd"
+
 [display]
 
 window/size/viewport_width=720
 window/size/viewport_height=480
 window/stretch/mode="canvas_items"
+
+[global_group]
+
+ennemi=""
 
 [physics]
 

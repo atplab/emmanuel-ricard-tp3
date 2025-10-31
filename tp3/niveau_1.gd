@@ -1,16 +1,6 @@
 extends Node2D
 
 
-func _on_ennemie_1_body_entered(body: Node2D) -> void:
-	print("collision")
-	$ennemies/ennemie1/ennemie1.play("dead")
-	$ennemies/ennemie1/dead_bee.play()
-
-func _on_ennemie_1_body_exited(body: Node2D) -> void:
-	print("au revoir")
-	$ennemies/ennemie1/ennemie1.visible = false
-
-
 func _on_coins_body_entered(body: Node2D) -> void:
 	$coins/coins1.visible = false  
 	$coins/coins1.queue_free()
@@ -62,10 +52,56 @@ func _on_silvercoin_body_entered(body: Node2D) -> void:
 
 
 func _on_bouton_body_entered(body: Node2D) -> void:
-	$Door/porte/porte.play("Open")
+	print(body.name)
+	if body is Player:
+		Main.porte_ouvrable = true
+		$porte/porte.play("Open")
 	
 
 
 func _on_porte_body_entered(body: Node2D) -> void:
-	if body is Joueur:
-		Main.changer_scene(main)
+	if body is Player:
+		if Main.porte_ouvrable == true :
+			get_tree().change_scene_to_file("res://niveau2.tscn")
+		
+
+func _on_bee_1_body_entered(body: Node2D) -> void:
+	print("collision")
+	$ennemies/bee1/bee.play("dead")
+	$ennemies/bee1/dead_bee.play()
+	$ennemies/bee1/dead_player.monitoring = false
+	$ennemies/bee1/dead_player.monitorable = false
+	body.sauter()
+	var timer = get_tree().create_timer(0.5)
+	await timer.timeout
+	$ennemies/bee1.queue_free()
+
+func _on_dead_player_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.hide()
+		body.process_mode = Node.PROCESS_MODE_DISABLED
+		var timer = get_tree().create_timer(2)
+		await timer.timeout
+		get_tree().reload_current_scene()
+		
+
+func _on_bee_2_body_entered(body: Node2D) -> void:
+	print("collision")
+	$ennemies/bee2/bee.play("dead")
+	$ennemies/bee2/dead_bee.play()
+	$ennemies/bee2/dead_player2.monitoring = false
+	$ennemies/bee2/dead_player2.monitorable = false
+	body.sauter()
+	var timer = get_tree().create_timer(0.5)
+	await timer.timeout
+	$ennemies/bee2.queue_free()
+
+
+
+func _on_dead_player_2_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.hide()
+		body.process_mode = Node.PROCESS_MODE_DISABLED
+		var timer = get_tree().create_timer(2)
+		await timer.timeout
+		get_tree().reload_current_scene()

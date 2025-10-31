@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://jg1n3a5w1185"]
+
+[ext_resource type="Script" uid="uid://bqbfk6nhj41tm" path="res://main.gd" id="1_8c3qv"]
+[ext_resource type="PackedScene" uid="uid://cssbf7mw2w2k4" path="res://hud.tscn" id="2_xlqsq"]
+[ext_resource type="PackedScene" uid="uid://b1ro10u7is8fx" path="res://niveau1.tscn" id="4_5iki5"]
+
+[node name="scene_initiale" type="Node2D"]
+script = ExtResource("1_8c3qv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("2_xlqsq")]
+
+[node name="Node2D" parent="." instance=ExtResource("4_5iki5")]
